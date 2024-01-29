@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app #Puisque nous avon mapper le repertoire app du projet au comteneur, 
+                    #tout ce que nous creons sur notre cpnteneur via docker-compose sera automatiquement ajouter au repertoire app sur vscoode
+    command: >
+     sh -c "python manage.py runserver 0.0.0.0:8000"
